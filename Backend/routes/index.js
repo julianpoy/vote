@@ -23,7 +23,7 @@ const generateRoomId = () => {
   return roomsById[candidateRoomId] ? generateRoomId() : candidateRoomId;
 };
 
-router.get('/rooms/create', (req, res, next) => {
+router.post('/rooms/create', (req, res, next) => {
   const room = {
     id: generateRoomId(),
     name: req.body.name,
