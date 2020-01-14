@@ -7,7 +7,7 @@ services:
     build:
       context: Backend
       dockerfile: Dockerfile
-    command: node ./bin/www
+    command: npx nodemon ./bin/www
     environment:
       - NODE_ENV
     volumes:
