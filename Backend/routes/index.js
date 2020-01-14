@@ -28,7 +28,10 @@ router.get('/rooms/create', (req, res, next) => {
   const room = {
     id: generateRoomId(),
     name: req.body.name,
-    options: req.body.options
+    options: req.body.optionTitles.map(option => ({
+      title: option,
+      voteCount: 0
+    }));
   };
 
   rooms.push(room);
@@ -44,6 +47,17 @@ router.get('/rooms/:roomId', (req, res, next) => {
   } else {
     res.status(404).send("Not found");
   }
+});
+
+router.post('/rooms/:roomId/vote', (req, res, next) => {
+  const room = roomsById[req.params.roomId];
+  if (!room) res.status(404).send("Not found");
+
+  room.options.map(option => {
+    if (req.votes.find(option.title)) {
+      option.voteCount += 1;
+    }
+  });
 });
 
 module.exports = router;
