@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  express:
+    image: node:12-alpine
+    ports:
+      - "3000:3000"
+    build:
+      context: Backend
+      dockerfile: Dockerfile
+    command: node ./bin/www
+    environment:
+      - NODE_ENV
+    volumes:
+      - ./Backend/app.js:/app/app.js
+      - ./Backend/bin:/app/bin
+      - ./Backend/public:/app/public
+      - ./Backend/routes:/app/routes
+      - ./Backend/views:/app/views
+      - ./Backend/package.json:/app/package.json

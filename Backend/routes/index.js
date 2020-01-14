@@ -23,7 +23,6 @@ const generateRoomId = () => {
   return roomsById[candidateRoomId] ? generateRoomId() : candidateRoomId;
 };
 
-/* Create room */
 router.get('/rooms/create', (req, res, next) => {
   const room = {
     id: generateRoomId(),
@@ -31,7 +30,7 @@ router.get('/rooms/create', (req, res, next) => {
     options: req.body.optionTitles.map(option => ({
       title: option,
       voteCount: 0
-    }));
+    }))
   };
 
   rooms.push(room);
