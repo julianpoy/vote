@@ -4,19 +4,22 @@
         <title>Create Room</title>
     </head>
     <body>
-        <input type="text" id="name" value="Room title">
+        <input type="text" id="roomTitle" value="Room title">
+        <textarea rows="20" cols="40" id="gameList">Paste games here</textarea>
         <input type="submit" value="create" onclick="createRoom()">
     </body>
     <script type="text/javascript">
         function createRoom() {
+            var games = document.getElementById('gameList').value.split(/\n/);
+
             fetch('rooms/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    'name': document.getElementById('name').value,
-                    'optionTitles': ['game']
+                    'name': document.getElementById('roomTitle').value,
+                    'optionTitles': games
                 })
             })
             .then((response) => response.json())
