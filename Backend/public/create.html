@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create Room</title>
+    </head>
+    <body>
+        <input type="text" id="name" value="Room title">
+        <input type="submit" value="create" onclick="createRoom()">
+    </body>
+    <script type="text/javascript">
+        function createRoom() {
+            fetch('rooms/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    'name': document.getElementById('name').value,
+                    'optionTitles': ['game']
+                })
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                window.location.href = '/results.html?roomId=' + data.id
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</html>
