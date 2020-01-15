@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vote</title>
+    </head>
+    <script>
+        const join = () => {
+            const roomId = document.getElementById("roomId").value;
+            window.location.href = "/vote.html?roomId=" + roomId;
+        }
+    </script>
+    <body>
+        <div>
+            <input id="roomId" type="text" placeholder="Room ID" />
+            <button onclick="join()">Join</button>
+        </div>
+    </body>
+</html>
