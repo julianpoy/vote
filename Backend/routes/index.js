@@ -53,10 +53,12 @@ router.post('/rooms/:roomId/vote', (req, res, next) => {
   if (!room) res.status(404).send("Not found");
 
   room.options.map(option => {
-    if (req.votes.find(option.title)) {
+    if (req.body.votes.find(el => el === option.title)) {
       option.voteCount += 1;
     }
   });
+
+  res.status(200).json(room);
 });
 
 module.exports = router;

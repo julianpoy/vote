@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vote</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    </head>
+    <script>
+        var searchParams = new URLSearchParams(window.location.search);
+
+        fetch(`/rooms/${searchParams.get("roomId")}`)
+        .then(response => response.json())
+        .then(body => {
+            document.getElementById('main-heading').innerText = `Results for Room: ${body.name} (${body.id})`;
+            const resultsContainer = document.getElementById('options');
+
+            body.options.map((option, idx) => {
+                const li = document.createElement('li');
+                resultsContainer.appendChild(li);
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = `checkbox-${idx}`;
+                checkbox.className = `option`;
+                checkbox.title = option.title;
+                li.appendChild(checkbox);
+
+                const span = document.createElement('span');
+                span.innerText = option.title;
+                li.appendChild(span);
+            });
+        });
+
+        const submit = () => {
+            const checkboxes = document.getElementsByClassName('option');
+            const selectedOptions = Array.from(checkboxes)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.title);
+
+            fetch(`rooms/${searchParams.get("roomId")}/vote`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    votes: selectedOptions
+                })
+            })
+            .then(response => response.json())
+            .then(body => {
+                window.location.href = '/results.html?roomId=' + searchParams.get("roomId");
+            });
+        }
+    </script>
+    <body>
+        <h1 id="main-heading">Loading...</h1>
+        <div>
+            <ul id="options">
+            </ul>
+        </div>
+
+        <button onclick="submit()">Cast My Vote!</button>
+    </body>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        ul {
+            list-style: none;
+        }
+
+        #results b {
+            margin-right: 1rem;
+        }
+    </style>
+</html>

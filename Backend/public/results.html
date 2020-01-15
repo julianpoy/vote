@@ -5,27 +5,34 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     </head>
     <script>
-        var searchParams = new URLSearchParams(window.location.search);
+        const searchParams = new URLSearchParams(window.location.search);
+        const roomId = searchParams.get("roomId");
 
-        fetch(`/rooms/${searchParams.get("roomId")}`)
-        .then(response => response.json())
-        .then(body => {
-            document.getElementById('main-heading').innerText = `Results for Room: ${body.name} (${body.id})`;
-            const resultsContainer = document.getElementById('results');
+        const fetchResults = () => {
+            fetch(`/rooms/${searchParams.get("roomId")}`)
+            .then(response => response.json())
+            .then(body => {
+                document.getElementById('main-heading').innerText = `Results for Room: ${body.name} (${body.id})`;
+                const resultsContainer = document.getElementById('results');
+                resultsContainer.innerHTML = ""; // Clear existing
 
-            body.options.sort((a, b) => a.voteCount - b.voteCount).map(option => {
-                const li = document.createElement('li');
-                resultsContainer.appendChild(li);
+                body.options.sort((a, b) => b.voteCount - a.voteCount).map(option => {
+                    const li = document.createElement('li');
+                    resultsContainer.appendChild(li);
 
-                const b = document.createElement('b');
-                b.innerText = option.voteCount;
-                li.appendChild(b);
+                    const b = document.createElement('b');
+                    b.innerText = option.voteCount;
+                    li.appendChild(b);
 
-                const span = document.createElement('span');
-                span.innerText = option.title;
-                li.appendChild(span);
+                    const span = document.createElement('span');
+                    span.innerText = option.title;
+                    li.appendChild(span);
+                });
             });
-        });
+        }
+        fetchResults();
+       
+        setInterval(() => fetchResults(), 5000);
     </script>
     <body>
         <h1 id="main-heading">Loading...</h1>
