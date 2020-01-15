@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Results</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    </head>
+    <script>
+        var searchParams = new URLSearchParams(window.location.search);
+
+        fetch(`/rooms/${searchParams.get("roomId")}`)
+        .then(response => response.json())
+        .then(body => {
+            document.getElementById('main-heading').innerText = `Results for Room: ${body.name} (${body.id})`;
+            const resultsContainer = document.getElementById('results');
+
+            body.options.sort((a, b) => a.voteCount - b.voteCount).map(option => {
+                const li = document.createElement('li');
+                resultsContainer.appendChild(li);
+
+                const b = document.createElement('b');
+                b.innerText = option.voteCount;
+                li.appendChild(b);
+
+                const span = document.createElement('span');
+                span.innerText = option.title;
+                li.appendChild(span);
+            });
+        });
+    </script>
+    <body>
+        <h1 id="main-heading">Loading...</h1>
+        <div>
+            <ul id="results">
+            </ul>
+        </div>
+
+    </body>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        ul {
+            list-style: none;
+        }
+
+        #results b {
+            margin-right: 1rem;
+        }
+    </style>
+</html>
