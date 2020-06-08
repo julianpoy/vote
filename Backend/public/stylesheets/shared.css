@@ -26,3 +26,36 @@ a.button {
   font-size: 20px;
   transition: background-color 0.2s;
 }
+
+input {
+  border: none;
+  border-bottom: 1px solid white;
+  background: transparent;
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  margin: 25px;
+  color: white;
+}
+
+textarea {
+  border: 1px solid white;
+  background: transparent;
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  margin: 25px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(200,200,200);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: rgb(200,200,200);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: rgb(200,200,200);
+}
