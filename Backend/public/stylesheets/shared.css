@@ -28,6 +28,7 @@ button, .button {
   padding: 20px 30px;
   border: 1px solid #fff;
   color: white;
+  cursor: pointer;
   box-shadow: 1px 1px 7px rgba(0,0,0,0.6);
   margin: 20px;
   min-width: 50px;
