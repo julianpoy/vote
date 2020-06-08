@@ -11,8 +11,13 @@
         <input class="button" type="submit" value="Create" onclick="createRoom()">
     </body>
     <script type="text/javascript">
+        const previousGames = localStorage.getItem('savedGames');
+        if (previousGames) document.getElementById('gameList').value = previousGames;
+
         function createRoom() {
-            var games = document.getElementById('gameList').value.split(/\n/);
+            const gamesPlainText = document.getElementById('gameList').value;
+            if (gamesPlainText) localStorage.setItem('savedGames', gamesPlainText);
+            var games = gamesPlainText.split(/\n/);
 
             fetch('rooms/create', {
                 method: 'POST',
