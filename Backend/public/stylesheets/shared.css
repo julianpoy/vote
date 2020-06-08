@@ -15,7 +15,7 @@ body {
   margin-top: 30vh;
 }
 
-.button {
+button, .button {
   padding: 20px 30px;
   border: 1px solid #fff;
   color: white;
