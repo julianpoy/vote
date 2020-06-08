@@ -9,6 +9,11 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.welcome-image {
+  max-width: 100%;
+  box-shadow: 1px 1px 7px rgba(0,0,0,0.7);
+}
+
 .centered-container {
   display: flex;
   justify-content: center;
