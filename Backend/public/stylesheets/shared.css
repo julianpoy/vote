@@ -1,0 +1,28 @@
+html {
+  background: rgb(45,45,45);
+}
+
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30vh;
+}
+
+a.button {
+  padding: 20px 30px;
+  border: 1px solid #fff;
+  color: white;
+  box-shadow: 1px 1px 7px rgba(0,0,0,0.6);
+  margin: 20px;
+  min-width: 50px;
+  text-align: center;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 20px;
+  transition: background-color 0.2s;
+}
