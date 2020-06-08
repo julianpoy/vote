@@ -49,7 +49,7 @@ router.get('/rooms/:roomId', (req, res, next) => {
 });
 
 router.post('/rooms/:roomId/vote', (req, res, next) => {
-  const room = roomsById[req.params.roomId];
+  const room = roomsById[req.params.roomId.toUpperCase()];
   if (!room) res.status(404).send("Not found");
 
   room.options.map(option => {
