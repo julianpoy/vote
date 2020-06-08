@@ -50,8 +50,9 @@ textarea {
   background: transparent;
   padding: 10px;
   font-size: 20px;
-  text-align: center;
+  text-align: left;
   margin: 25px;
+  color: white;
 }
 
 ul {
