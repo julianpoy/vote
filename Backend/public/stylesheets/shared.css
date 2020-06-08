@@ -1,0 +1,70 @@
+html {
+  background: rgb(45,45,45);
+  color: white;
+}
+
+body {
+  text-align: center;
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30vh;
+}
+
+button, .button {
+  padding: 20px 30px;
+  border: 1px solid #fff;
+  color: white;
+  box-shadow: 1px 1px 7px rgba(0,0,0,0.6);
+  margin: 20px;
+  min-width: 50px;
+  text-align: center;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 20px;
+  transition: background-color 0.2s;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid white;
+  background: transparent;
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  margin: 25px;
+  color: white;
+}
+
+textarea {
+  border: 1px solid white;
+  background: transparent;
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  margin: 25px;
+}
+
+ul {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(200,200,200);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: rgb(200,200,200);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: rgb(200,200,200);
+}

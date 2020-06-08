@@ -2,11 +2,13 @@
 <html>
     <head>
         <title>Create Room</title>
+        
+        <link rel="stylesheet" type="text/css" href="stylesheets/shared.css" />
     </head>
     <body>
-        <input type="text" id="roomTitle" placeholder="Room title">
-        <textarea rows="20" cols="40" id="gameList" placeholder="Paste games here"></textarea>
-        <input type="submit" value="create" onclick="createRoom()">
+        <input type="text" id="roomTitle" placeholder="Room title"><br />
+        <textarea rows="20" cols="40" id="gameList" placeholder="Paste games here"></textarea><br />
+        <input class="button" type="submit" value="create" onclick="createRoom()">
     </body>
     <script type="text/javascript">
         function createRoom() {
