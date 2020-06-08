@@ -12,7 +12,7 @@ body {
 .centered-container {
   display: flex;
   justify-content: center;
-  margin-top: 30vh;
+  margin-top: 30px;
 }
 
 input, textarea, button, .button {
