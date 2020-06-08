@@ -18,16 +18,16 @@
                 const li = document.createElement('li');
                 resultsContainer.appendChild(li);
 
+                const label = document.createElement('label');
+                label.innerText = option.title;
+                li.appendChild(label);
+
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
                 checkbox.id = `checkbox-${idx}`;
                 checkbox.className = `option`;
                 checkbox.title = option.title;
-                li.appendChild(checkbox);
-
-                const span = document.createElement('span');
-                span.innerText = option.title;
-                li.appendChild(span);
+                label.prependChild(checkbox);
             });
         });
 
