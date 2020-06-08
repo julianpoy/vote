@@ -40,7 +40,7 @@ router.post('/rooms/create', (req, res, next) => {
 });
 
 router.get('/rooms/:roomId', (req, res, next) => {
-  const room = roomsById[req.params.roomId];
+  const room = roomsById[req.params.roomId.toUpperCase()];
   if (room) {
     res.status(200).json(room);
   } else {
