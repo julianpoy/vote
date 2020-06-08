@@ -15,6 +15,10 @@ body {
   margin-top: 30vh;
 }
 
+input, textarea, button, .button {
+  outline-color: #E67E00;
+}
+
 button, .button {
   padding: 20px 30px;
   border: 1px solid #fff;
