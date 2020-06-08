@@ -7,13 +7,13 @@
     </head>
     <script>
         const join = () => {
-            const roomId = document.getElementById("roomId").value;
+            const roomId = document.getElementById("roomId").value.toUpperCase();
             window.location.href = "/vote.html?roomId=" + roomId;
         }
     </script>
     <body>
         <div>
-            <input id="roomId" type="text" placeholder="Room ID" /><br />
+            <input id="roomId" type="text" placeholder="Room ID" style="text-transform: uppercase;" /><br />
             <button onclick="join()">Join</button>
         </div>
     </body>
